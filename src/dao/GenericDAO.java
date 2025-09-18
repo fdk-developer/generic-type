@@ -1,12 +1,17 @@
 package dao;
 
+import domain.GenericDomain;
+
 import javax.swing.text.html.Option;
+import java.net.IDN;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-public abstract class GenericDAO<T> {
+                                // id é livre
+                                // tem que extenter do generic domain que tem o mesmo tipo do ID
+public abstract class GenericDAO<ID, T extends GenericDomain<ID>> {
 
     private final List<T> db = new ArrayList<>();
 
@@ -15,9 +20,10 @@ public abstract class GenericDAO<T> {
         return domain;
     }
 
-    public T update(T domain) {
-        var stored = db.stream().filter(d -> d.equals(domain))
-                .findFirst().orElseThrow();
+    public T update(ID id, T domain) {
+        //var stored = db.stream().filter(d -> d.getId().equals(id))
+        //        .findFirst().orElseThrow();
+        var stored = find(d -> d.getId().equals(id)).orElseThrow();
         db.remove(stored);
         return save(domain);
     }
