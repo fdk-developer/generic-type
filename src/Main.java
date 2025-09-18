@@ -1,5 +1,5 @@
 import dao.GenericDAO;
-import domain.UserDAO;
+import dao.UserDAO;
 import domain.UserDomain;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or

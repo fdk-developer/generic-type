@@ -1,6 +1,6 @@
-package domain;
+package dao;
 
-import dao.GenericDAO;
+import domain.UserDomain;
 
 public class UserDAO extends GenericDAO<Integer, UserDomain> {
 }
