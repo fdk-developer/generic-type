@@ -16,7 +16,11 @@ public class Main {
         System.out.println("===inicioUserDAO===");
         var user = new UserDomain(1, "João", 20);
         System.out.println(userDao.count());
-        System.out.println(userDao.save(user));
+        //System.out.println(userDao.save(user));
+
+        // trabalhando com varargs
+        System.out.println(userDao.save(user, new UserDomain(), new UserDomain()));
+
         System.out.println(userDao.findAll());
         System.out.println(userDao.find(d -> d.getId().equals(1)));
         System.out.println(userDao.find(d -> d.getId().equals(2)));

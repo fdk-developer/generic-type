@@ -3,8 +3,10 @@ package dao;
 import domain.GenericDomain;
 
 import javax.swing.text.html.Option;
+import java.lang.reflect.Array;
 import java.net.IDN;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
@@ -15,9 +17,14 @@ public abstract class GenericDAO<ID, T extends GenericDomain<ID>> {
 
     private final List<T> db = new ArrayList<>();
 
-    public T save(T domain) {
+    private T save(T domain) {
         db.add(domain);
         return domain;
+    }
+
+    // ... varargs permite adicionar varios parametros
+    public boolean save(T... domains) {
+        return db.addAll(Arrays.stream(domains).toList());
     }
 
     public T update(ID id, T domain) {
