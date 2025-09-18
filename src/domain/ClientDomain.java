@@ -2,29 +2,29 @@ package domain;
 
 import java.util.Objects;
 
-public class UserDomain implements GenericDomain<Integer>{
+public class ClientDomain implements GenericDomain<String> {
 
-    private Integer id;
+    private String id;
 
     private String name;
     private int age;
 
-    public UserDomain() {
+    public ClientDomain() {
     }
 
-    public UserDomain(Integer id, String name, int age) {
+    public ClientDomain(String id, String name, int age) {
         this.id = id;
         this.name = name;
         this.age = age;
     }
 
     @Override
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
     @Override
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -44,12 +44,10 @@ public class UserDomain implements GenericDomain<Integer>{
         this.age = age;
     }
 
-
-
     @Override
     public boolean equals(Object o) {
-        if (!(o instanceof UserDomain that)) return false;
-        return age == that.age && Objects.equals(id, that.id) && Objects.equals(name, that.name);
+        if (!(o instanceof ClientDomain that)) return false;
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(age, that.age);
     }
 
     @Override
@@ -59,12 +57,10 @@ public class UserDomain implements GenericDomain<Integer>{
 
     @Override
     public String toString() {
-        return "UserDomain{" +
+        return "ClientDomain{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", age=" + age +
                 '}';
     }
-
-
 }
